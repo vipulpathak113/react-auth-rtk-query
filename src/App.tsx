@@ -1,13 +1,14 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home/Home";
-import { SendEmail } from "./pages/SendEmail/SendEmail";
-import { EmailVerify } from "./pages/EmailVerify/EmailVerify";
-import { Signin } from "./pages/Signin/Signin";
-import { Signup } from "./pages/Signup/Signup";
-import { ChangePassword } from "./pages/ChangePassword/ChangePassword";
-import { ForgotPassword } from "./pages/ForgotPassword/ForgotPassword";
-import { Error404 } from "./pages/Error404/Error404";
+import { lazily } from "react-lazily";
+const { Home } = lazily(() => import('./pages/Home/Home'));
+const { SendEmail } = lazily(() => import('./pages/SendEmail/SendEmail'));
+const { EmailVerify } = lazily(() => import('./pages/EmailVerify/EmailVerify'));
+const { Signin } = lazily(() => import('./pages/Signin/Signin'));
+const { Signup } = lazily(() => import('./pages/Signup/Signup'));
+const {ChangePassword} = lazily(() => import('./pages/ChangePassword/ChangePassword'))
+const {ForgotPassword} = lazily(() => import('./pages/ForgotPassword/ForgotPassword'))
+const {Error404} = lazily(() => import('./pages/Error404/Error404'))
 
 function App() {
   return (
