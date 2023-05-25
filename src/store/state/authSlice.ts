@@ -1,23 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface authState {
-  value: number;
+export interface AuthState {
+  name: string | null;
+  token: string | null;
 }
 
-const initialState: authState = {
-  value: 0,
+const initialState: AuthState = {
+  name: null,
+  token: null,
 };
 
-const authSlice = createSlice({
+export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    setUser: (
+      state,
+      action: PayloadAction<{ name: string; token: string }>
+    ) => {
+      state.name = action.payload.name;
+      state.token = action.payload.token;
+    },
+    defaultState: (state) => {
+      state = initialState;
     },
   },
 });
 
-export const { increment } = authSlice.actions;
+// Action creators are generated for each case reducer function
+export const { setUser, defaultState } = authSlice.actions;
 
 export default authSlice.reducer;

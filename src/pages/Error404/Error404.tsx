@@ -1,5 +1,5 @@
-export const Error404 = () => {
-  return (
-    <div>Page not found</div>
-  )
-}
+const Error404 = () => {
+  return <div>Page not Found</div>;
+};
+
+export default Error404;
